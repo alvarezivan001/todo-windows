@@ -1,0 +1,79 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+
+body {
+  display: grid;
+  grid-template-rows: 2fr 11fr 1fr;
+
+}
+
+body,
+html {
+  margin: 0;
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#header {
+  grid-column: 1 2;
+  background-color: rgb(55, 55, 240);
+}
+
+#footer {
+  grid-column: 3 4;
+  background-color: rgb(55, 55, 240);
+}
+
+#main {
+  grid-column: 2 3;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+#panel {
+  background-color: rgb(138, 138, 246);
+}
+
+
+/* added after vacation */
+
+button {
+  border: none;
+  background: none;
+}
+
+li {
+  border: green 1px solid;
+  display: flex;
+  justify-content: space-between;
+}
+
+.priority.high {
+  background-color: red;
+  padding: 10px;
+
+}
+
+.priority.medium {
+  background-color: orange;
+  padding: 10px;
+}
+
+.priority.low {
+  padding: 10px;
+}
+
+.todo_Title {
+  flex-basis: 100px;
+}
+
+.dueDate {
+  flex-basis: 100px;
+}
+
+.details {
+  flex-basis: 300px;
+}
