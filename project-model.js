@@ -26,6 +26,9 @@ class Project {
   returnArray() {
     return this._array;
   }
+  // searchForToDo(name) {
+    
+  // }
 };
 
 const newProject = (title) => {
