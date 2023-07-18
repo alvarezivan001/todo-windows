@@ -1,4 +1,4 @@
-import { loadToDoIntoBody } from "./todo-viewer.js";
+import { loadToDoIntoBody, displayNewToDoPrompt, hideNewToDoPrompt, clearToDoPromptFields } from "./todo-viewer.js";
 import { createToDo, changeDueDate, changePriority } from "./todo-model.js";
 import { newProject, addToProject, removeFromProject } from "./project-model.js";
 import { loadProjectIntoDOM } from "./project-viewer.js";
@@ -17,10 +17,13 @@ const getProjectIndex = (projTitle) => {
 
   return projectsArray.findIndex(item => item.title == projTitle);
 }
+const getProjectTitle = (projIndex) => {
+  return projectsArray[projIndex].title;
+}
 
 
 directorAddProject('default');
-const defaultIndex = getProjectIndex('default');
+const currentProjectIndex = getProjectIndex('default');
 
 
 const wakeUpToDo = createToDo('wake up', 'wake up to have a productive day!', 'default', dueDateNA, 'high');
@@ -28,9 +31,9 @@ const sleepToDo = createToDo('sleep', 'early to bed, early to rise', 'default', 
 const dishesToDo = createToDo('do dishes', 'pile of dishes need to be cleaned', 'default', dueDateNA, 'low');
 
 
-addToProject(projectsArray[defaultIndex], wakeUpToDo);
-addToProject(projectsArray[defaultIndex], sleepToDo);
-addToProject(projectsArray[defaultIndex], dishesToDo);
+addToProject(projectsArray[currentProjectIndex], wakeUpToDo);
+addToProject(projectsArray[currentProjectIndex], sleepToDo);
+addToProject(projectsArray[currentProjectIndex], dishesToDo);
 
 
 const loadAllProjectToDos = (projIndex) => {
@@ -42,24 +45,46 @@ const loadAllProjectToDos = (projIndex) => {
   }
   //displays todos from project array
 };
-loadAllProjectToDos(defaultIndex);
+loadAllProjectToDos(currentProjectIndex);
 
 
 const newToDoButton = document.querySelector('#new-item-button');
+const cancelToDoButton = document.querySelector('#todo-cancel');
+const enterToDoButton = document.querySelector('#todo-enter');
 
 newToDoButton.addEventListener('click', () => {
-  //ask for input from a dropdown: name, project, priortiy
-  // desc. and due date optional?
-
+  displayNewToDoPrompt();
   // steps: bring up a div with inputs // part  of todo viewer
   //us info to create to do //todomodel
   //controller will facilatate between the two
-
-
 });
+cancelToDoButton.addEventListener('click', () => {
+  hideNewToDoPrompt();
+  clearToDoPromptFields();
+});
+enterToDoButton.addEventListener('click', () => {
+  submitNewToDo();
+  hideNewToDoPrompt();
+  clearToDoPromptFields();
+});
+const submitNewToDo = () => {
+  const newToDoTitle = document.getElementById('todo_name').value;
+  const newToDoDetails = document.getElementById('todo_details').value;
+  const newToDoPriority = document.getElementById('todo_priority').value;
+  const newToDoDueDate = document.getElementById('todo_duedate').value;
+  const newToDoProject = getProjectTitle(currentProjectIndex);
 
-//get nodelist of edit buttons
-//would have to do this everytime a project is loaded or notes are loaded
-const editNodelist = document.querySelectorAll('.edit');
+  const newToDo = createToDo(newToDoTitle, newToDoDetails, newToDoProject, newToDoDueDate, newToDoPriority);
+  addToProject(projectsArray[currentProjectIndex], newToDo);
+  loadToDoIntoBody(newToDo);
+}
 
-editNodelist.forEach(node => node);
+// //done with currentindex
+// const removeCurrentProjectFlag = () => {}
+// const addCurrentProjectFlag = () => {}
+
+// //get nodelist of edit buttons
+// //would have to do this everytime a project is loaded or notes are loaded
+// const editNodelist = document.querySelectorAll('.edit');
+
+// editNodelist.forEach(node => node);

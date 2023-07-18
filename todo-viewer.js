@@ -36,9 +36,24 @@ const loadToDoIntoBody = (toDoItem) => {
   const itemsList = document.getElementById('items-list');
   itemsList.insertBefore(listItem, addTaskNode);
 };
-
-
 //after you add a new todo to a project
 // const loadNewToDoIntoBOdy;
 
-export { loadToDoIntoBody };
+const displayNewToDoPrompt = () => {
+
+  const toDoPrompt = document.getElementById('todo-prompt');
+  // const newToDoButton = document.getElementById('new-item-button');
+  // newToDoButton.style.display = 'none';
+  toDoPrompt.style.display = 'block';
+
+};
+const hideNewToDoPrompt = () => {
+  const toDoPrompt = document.getElementById('todo-prompt');
+  toDoPrompt.style.display = 'none';
+}
+const clearToDoPromptFields = () => {
+  document.getElementById('todo-prompt-form').reset();
+}
+
+
+export { loadToDoIntoBody, displayNewToDoPrompt, hideNewToDoPrompt, clearToDoPromptFields };

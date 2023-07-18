@@ -77,3 +77,13 @@ li {
 .details {
   flex-basis: 300px;
 }
+
+#todo-prompt {
+  width: auto;
+  display: none;
+  
+}
+#new-item {
+  display: flex;
+  flex-direction: column;
+}
