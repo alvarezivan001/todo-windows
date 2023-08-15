@@ -6,31 +6,37 @@ import { loadProjectIntoDOM } from "./project-viewer.js";
 // import { initializeToDo } from "./todo-controller.js";
 
 const dueDateNA = 'due date n/a';
+//variable for duedate
 const projectsArray = new Array();
+//array for all the projects
 
 const directorAddProject = (name) => {
-
+//adds a project to the project array 
+//and loads it into the DOM
   projectsArray.push(newProject(name));
   loadProjectIntoDOM(projectsArray.find(item => item.title == name));
 };
 const getProjectIndex = (projTitle) => {
-
+//gets the index given a title?
   return projectsArray.findIndex(item => item.title == projTitle);
 }
 const getProjectTitle = (projIndex) => {
   return projectsArray[projIndex].title;
+  //returns the title, given an index
 }
 
 
 directorAddProject('default');
+//creates the default project
 const currentProjectIndex = getProjectIndex('default');
+//gets the index of default
 
-
+//basic todos
 const wakeUpToDo = createToDo('wake up', 'wake up to have a productive day!', 'default', dueDateNA, 'high');
 const sleepToDo = createToDo('sleep', 'early to bed, early to rise', 'default', dueDateNA, 'medium');
 const dishesToDo = createToDo('do dishes', 'pile of dishes need to be cleaned', 'default', dueDateNA, 'low');
 
-
+//adds basic todos to default
 addToProject(projectsArray[currentProjectIndex], wakeUpToDo);
 addToProject(projectsArray[currentProjectIndex], sleepToDo);
 addToProject(projectsArray[currentProjectIndex], dishesToDo);
@@ -43,11 +49,12 @@ const loadAllProjectToDos = (projIndex) => {
   for (var i = 0; i < index; i++) {
       loadToDoIntoBody(array[i]);
   }
-  //displays todos from project array
+  //displays todos from project array given a project index
 };
 loadAllProjectToDos(currentProjectIndex);
 
 
+//gets buttons
 const newToDoButton = document.querySelector('#new-item-button');
 const cancelToDoButton = document.querySelector('#todo-cancel');
 const enterToDoButton = document.querySelector('#todo-enter');
@@ -67,6 +74,8 @@ enterToDoButton.addEventListener('click', () => {
   hideNewToDoPrompt();
   clearToDoPromptFields();
 });
+
+//if new task is submitted, adds it to the project and loads it to DOM
 const submitNewToDo = () => {
   const newToDoTitle = document.getElementById('todo_name').value;
   const newToDoDetails = document.getElementById('todo_details').value;

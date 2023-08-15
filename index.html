@@ -9,50 +9,107 @@
 </head>
 
 <body>
-  <div class="sections" id="header">
-
+  <div id="header">
+        <img id="logo" src="logo.svg">
+        <div id="logoText">Do ItTo It</div>
   </div>
-  <div class="sections" id="main">
-    <div class="parts" id="panel">
-      <div id="projects">Projects:</div>
-      <div id="projects-list">
-        <!-- <button id="default">Default</button> -->
-        <button id="new-project">+ add new project</button>
-        <button id="notes">Notes</button>
-      </div>
-      <div id="notes">Notes</div>
-    </div>
-    <div class="parts" id="body">
-      <div id="project">name or title</div>
-      <ul id="items-list">
-        <li id="new-item">
-          <button id="new-item-button">
-            + add new task
-          </button>
-          <div id="todo-prompt">
-            <form id="todo-prompt-form">
-              <label for="todo_name">Title</label>
-              <input type="text" id="todo_name" name="todo_name"><br>
-              <label for="todo_details">Details (optional)</label>
-              <input type="text" id="todo_details" name="todo_details"><br>
-              <label for="todo_duedate">DueDate</label>
-              <input type="text" id="todo_duedate" name="todo_duedate"><br>
-              <label for="todo_priority">Priority</label>
-              <select id="todo_priority" name="todo_priority" >
-                  <option value="high">high</option>
-                  <option value="medium">medium</option>
-                  <option value="low">low</option>
-              </select>
-              <button type="button" id="todo-cancel">Cancel</button>
-              <button type="button" id="todo-enter">Enter</button>
-            </form>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="sections" id="footer">
 
+  <div id="main">
+        <div class="parts" id="panel">
+              <div id="projects">Projects
+                    <img id="projectImg" src="project.svg">             
+              </div>
+                    <div id="projectsList">
+                          <button class="project" id="Default">Default</button>
+                          <button class="project" id="Workout">Workout
+                              <div class="projectDelete" id="workoutDelete">
+                                    x
+                              </div>
+                          </button>
+                          <button class="project" id="Coding">Coding</button>
+                          <button class="project" id="newProject">+ add project</button>
+                          <!-- <form id="projectForm"> -->
+                                  <input type="text" id="projectName" name="projectName">
+                                  <div id="projectButtonContainer">
+                                    <button type="button" id="projectCancel">Cancel</button>
+                                    <button type="button" id="projectEnter">Enter</button>
+                                  </div>
+                                 
+                          <!-- </form> -->
+                    </div>
+              <button class="project" id="notesButton">Notes
+                      <img id="notesImg" src="note.svg">
+              </button>
+        </div>
+        <div class="parts" id="body">
+              <div id="projectHeader">Default</div>
+                    <ul id="itemsList">
+                        <li class="Default" id="WakeUp">
+                              <div class="priority low"></div>
+                              <div class="itemTitle" contenteditable="true">Wake Up</div>
+                              <input class="dueDate" type="date">
+                              <div class="details" contenteditable="true">Get Up and Go!</div>
+                              <button type="button" class="delete">x</button>
+                        </li>
+                        <li class="Default" id="Code">
+                           <div class="priority high"></div>
+                           <div class="itemTitle" contenteditable="true">Code</div>
+                           <input class="dueDate" type="date">
+                           <div class="details" contenteditable="true">Work on Odin Project</div>
+                           <button type="button" class="delete">x</button>
+                        </li>
+                        <li class="Default" id="WakeUp">
+                              <div class="priority medium"></div>
+                              <div class="itemTitle" contenteditable="true">Buy Groceries</div>
+                              <input class="dueDate" type="date">
+                              <div class="details" contenteditable="true">Bananas, Gatorade, milk, etc.</div>
+                              <button type="button" class="delete">x</button>
+                        </li>
+                        <li id="newItem">
+                            <button id="newItemButton">+ add new task
+                            </button>
+                            <div id="itemPrompt">                  
+                                <label for="newItemName">Title:</label><br>
+                                <input type="text" id="newItemName" name="newItemName"><br>
+                                <label for="newDetails">Details (optional):</label><br>
+                                <textarea type="text" id="newDetails" name="newDetails"></textarea><br>
+                                <label for="newDueDate">DueDate:</label>
+                                <input type="date" id="newDueDate" name="newDueDate"><br>
+                                <div>
+                                      <label for="newPriority">Priority:</label><br>
+                                      <select id="newPriority" name="newPriority" >
+                                          <option value="high">high</option>
+                                          <option value="medium">medium</option>
+                                          <option value="low">low</option>
+                                      </select>
+                                      <button type="button" id="itemCancel">Cancel</button>
+                                      <button type="button" id="itemEnter">Enter</button>                    
+                                </div>                          
+                            </div>
+                        </li>
+                    </ul>
+        </div>
+
+        <!-- <div class="parts" id="notes">
+              <div id="notesContainer">
+                    <div class="note" contenteditable="true">
+                          <button class="deleteNote" contenteditable="false">x 
+                          </button>
+                          <div class="noteContent">This is an example note 
+                          </div>
+                    </div>
+                    <div class="note" contenteditable="true">
+                          <button class="deleteNote" contenteditable="false">x                 
+                          </button>
+                          <div class="noteContent">You can edit these notes
+                          </div>
+                    </div>
+                   <button class="note" id="newNote">+ New Note</button>
+              </div>
+        </div> -->
+  </div>
+  
+  <div id="footer">
   </div>
 
 
