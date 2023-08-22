@@ -22,18 +22,22 @@
                     <div id="projectsList">
                           <button class="project" id="Default">Default</button>
                           <button class="project" id="Workout">Workout
-                              <div class="projectDelete" id="workoutDelete">
+                              <div class="projectDelete">
                                     x
                               </div>
                           </button>
-                          <button class="project" id="Coding">Coding</button>
+                          <button class="project" id="Coding">Coding
+                              <div class="projectDelete">
+                                    x
+                              </div>
+                          </button>
                           <button class="project" id="newProject">+ add project</button>
                           <!-- <form id="projectForm"> -->
-                                  <input type="text" id="projectName" name="projectName">
-                                  <div id="projectButtonContainer">
-                                    <button type="button" id="projectCancel">Cancel</button>
-                                    <button type="button" id="projectEnter">Enter</button>
-                                  </div>
+                          <input type="text" id="projectName" name="projectName">
+                          <div id="projectButtonContainer">
+                                <button type="button" id="projectCancel">Cancel</button>
+                                <button type="button" id="projectEnter">Enter</button>
+                          </div>
                                  
                           <!-- </form> -->
                     </div>
@@ -44,21 +48,21 @@
         <div class="parts" id="body">
               <div id="projectHeader">Default</div>
                     <ul id="itemsList">
-                        <li class="Default" id="WakeUp">
+                        <li class="item" id="WakeUp">
                               <div class="priority low"></div>
                               <div class="itemTitle" contenteditable="true">Wake Up</div>
                               <input class="dueDate" type="date">
                               <div class="details" contenteditable="true">Get Up and Go!</div>
                               <button type="button" class="delete">x</button>
                         </li>
-                        <li class="Default" id="Code">
+                        <li class="item" id="Code">
                            <div class="priority high"></div>
                            <div class="itemTitle" contenteditable="true">Code</div>
-                           <input class="dueDate" type="date">
+                           <input class="dueDate" type="date" value="2023-09-23">
                            <div class="details" contenteditable="true">Work on Odin Project</div>
                            <button type="button" class="delete">x</button>
                         </li>
-                        <li class="Default" id="WakeUp">
+                        <li class="item" id="WakeUp">
                               <div class="priority medium"></div>
                               <div class="itemTitle" contenteditable="true">Buy Groceries</div>
                               <input class="dueDate" type="date">
@@ -66,24 +70,26 @@
                               <button type="button" class="delete">x</button>
                         </li>
                         <li id="newItem">
-                            <button id="newItemButton">+ add new task
+                            <button id="newItemButton">+ add new Item
                             </button>
-                            <div id="itemPrompt">                  
-                                <label for="newItemName">Title:</label><br>
-                                <input type="text" id="newItemName" name="newItemName"><br>
-                                <label for="newDetails">Details (optional):</label><br>
-                                <textarea type="text" id="newDetails" name="newDetails"></textarea><br>
-                                <label for="newDueDate">DueDate:</label>
-                                <input type="date" id="newDueDate" name="newDueDate"><br>
-                                <div>
-                                      <label for="newPriority">Priority:</label><br>
-                                      <select id="newPriority" name="newPriority" >
-                                          <option value="high">high</option>
-                                          <option value="medium">medium</option>
-                                          <option value="low">low</option>
-                                      </select>
-                                      <button type="button" id="itemCancel">Cancel</button>
-                                      <button type="button" id="itemEnter">Enter</button>                    
+                            <div id="itemPrompt"> 
+                                    <form id="itemPromptForm">
+                                          <label for="newItemName">Title:</label><br>
+                                          <input type="text" id="newItemName" name="newItemName"><br>
+                                          <label for="newDetails">Details (optional):</label><br>
+                                          <textarea type="text" id="newDetails" name="newDetails"></textarea><br>
+                                          <label for="newDueDate">DueDate:</label>
+                                          <input type="date" id="newDueDate" name="newDueDate"><br>
+                                          <div>
+                                                <label for="newPriority">Priority:</label><br>
+                                                <select id="newPriority" name="newPriority" >
+                                                      <option value="high">high</option>
+                                                      <option value="medium">medium</option>
+                                                      <option value="low">low</option>
+                                                </select>
+                                                <button type="button" id="itemCancel">Cancel</button>
+                                                <button type="button" id="itemEnter">Enter</button>    
+                                    </form>                      
                                 </div>                          
                             </div>
                         </li>

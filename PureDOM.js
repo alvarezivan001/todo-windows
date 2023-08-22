@@ -1,0 +1,121 @@
+import Project from "./Project.js";
+import Item from "./Item.js";
+import Notes from "./Notes.js";
+
+export default class PureDOM {
+    loadNoteIntoMain(value = '')
+    {
+
+    }
+    loadProjectIntoPanel(project = new Project()) {
+        
+        if(project.title == 'Default')
+        {   document.getElementById('newProject').insertAdjacentHTML("beforebegin",
+
+            `<button class="project" id="${project.title}">${project.title}
+
+
+                </button>`
+            );
+        }
+        else{
+            document.getElementById('newProject').insertAdjacentHTML("beforebegin",
+
+            `<button class="project" id="${project.title}">${project.title}
+                            <div class="projectDelete">
+                                    x
+                            </div>
+                </button>`
+            );
+        }
+    }
+    loadItemIntoMain (item = new Item()) {
+        document.getElementById('newItem').insertAdjacentHTML('beforebegin',
+        
+        `<li class="projectItem">
+                              <div class="priority ${item.priority}"></div>
+                              <div class="itemTitle" contenteditable="true">${item.name}</div>
+                              <input class="dueDate" type="date" value="${item.dueDate}">
+                              <div class="details" contenteditable="true">${item.details}</div>
+                              <button type="button" class="delete">x</button>
+                        </li>`
+        
+        );
+    }
+
+
+    //????
+    addNewNote () {
+
+
+    }
+
+
+    // Item Form DOM handlers
+    displayNewItemPrompt() {
+        const itemPrompt = document.getElementById('itemPrompt');
+        itemPrompt.style.display = 'block';
+    }
+    hideNewItemPrompt() {
+        const itemPrompt = document.getElementById('itemPrompt');
+        itemPrompt.style.display = 'none';
+    }
+    clearItemPromptFields() {
+        document.getElementById('itemPromptForm').reset();
+    }
+    
+
+
+    //Project Form DOM handlers
+    displayNewProjPrompt() {
+        const newProjectInput = document.getElementById('projectName');
+        const newProjectButtons = document.getElementById('projectButtonContainer');
+
+        newProjectButtons.style.display = 'block';
+        newProjectInput.style.display = 'block';
+    }
+    hideNewProjPrompt() {
+        const newProjectInput = document.getElementById('projectName');
+        const newProjectButtons = document.getElementById('projectButtonContainer');
+
+        
+        newProjectButtons.style.display = 'none';
+        newProjectInput.style.display = 'none';
+    }
+    clearProjPromptFields() {
+        const newProjectInput = document.getElementById('projectName');
+        newProjectInput.value = "";
+    }
+
+
+
+
+      getNewItemName(){
+        return document.getElementById('newItemName').value;
+       
+      }
+      getNewItemDetails(){
+        return document.getElementById('newDetails').value;
+
+      }
+      getNewItemPriority(){
+        return document.getElementById('newPriority').value;
+
+      }
+      getNewItemDueDate(){
+        return document.getElementById('newDueDate').value;
+      }
+      getProjectName(){
+        return document.getElementById('projectHeader').textContent;
+      }
+
+
+      getNewProjName(){
+        return document.getElementById('projectName').value;
+
+      }
+    
+
+}
+
+export {PureDOM};

@@ -96,12 +96,13 @@ img{
   background-color: rgb(92, 132, 252);
 }
 .projectDelete {
-  color: transparent;
+  color: lightpink;
   -webkit-text-stroke: 0px; 
 }
-/* #workoutDelete:hover{
+.projectDelete:hover{
   color: black;
-} */
+  
+}
 #newProject {
   text-align: center;
   margin-top: 15px;
@@ -217,7 +218,7 @@ li > div {
 
 #itemPrompt {
   width: auto;
-  /* display: none; */
+  display: block;
   
   
 }
