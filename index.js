@@ -152,11 +152,15 @@ class Main {
     this.allProjects.forEach(project => {
         this.dom.loadProjectIntoPanel(project);
     });
+
+    this.initAllProjectButtons();
     this.initAllProjDelButtons();
     
     this.printProjects();
   }
   loadAllItemsOfProj(project = new Project()) {
+
+    this.dom.loadProjNameIntoMain(project.title);
     project.items.forEach(item => {
       this.dom.loadItemIntoMain(item);
     });
@@ -201,7 +205,7 @@ class Main {
     const itemDelButtons = document.querySelectorAll('.delete');
     itemDelButtons.forEach((item) => item.addEventListener(
       'click', () => {
-        this.removeItem(item.parentNode);
+        this.removeItem(item.parentNode.getElementsByClassName('itemTitle')[0]);
       }
     ));
   }
@@ -251,10 +255,10 @@ class Main {
   submitNewItem(){
     this.getProject(this.dom.getProjectName()).addItem(new Item(
 
-      this.dom.getNewItemName,
-      this.dom.getNewItemDetails, 
-      this.dom.getNewItemDueDate,
-      this.dom.getNewItemPriority
+      this.dom.getNewItemName(),
+      this.dom.getNewItemDetails(), 
+      this.dom.getNewItemDueDate(),
+      this.dom.getNewItemPriority()
     ));
 
     this.removeAllItemsOfProj();
@@ -277,18 +281,34 @@ class Main {
     this.removeAllProjects();
     this.loadAllProjects();
   }
-  removeItem(liParent) {
-    var parent = document.getElementById('Code');
-    var child = parent.childNodes[1];
+  removeItem(divTitle) {
 
     var proj = document.getElementById('projectHeader').textContent;
     var currentProj = this.getProject(proj);
-    currentProj.removeItem(child.textContent);
+    currentProj.removeItem(divTitle.textContent);
 
     this.removeAllItemsOfProj();
     this.loadAllItemsOfProj(currentProj);
     
   }
+
+
+  //for changing between projects
+  initAllProjectButtons(){
+    const projectButtons = document.querySelectorAll('.project');
+    projectButtons.forEach((proj) => proj.addEventListener(
+      'click', () => {
+        this.switchProjects(proj.getElementsByTagName('span')[0].textContent);
+          }
+        ));
+  }
+  switchProjects(value){
+    let currentProj = this.getProject(value);
+
+    this.removeAllItemsOfProj();
+    this.loadAllItemsOfProj(currentProj);
+  }
+
 
 
 

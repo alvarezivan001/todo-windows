@@ -12,7 +12,7 @@ export default class PureDOM {
         if(project.title == 'Default')
         {   let el = document.getElementById('newProject');
             console.log(el);
-            let str = `<button class="project" id="${project.title}">
+            let str = `<button class="project" type="button" id="${project.title}">
                       <span>${project.title}</span>
                       </button>`;
                       console.log(str);
@@ -22,7 +22,7 @@ export default class PureDOM {
         else{
             let el = document.getElementById('newProject');
             console.log(el);
-            let str = `<button class="project" id="${project.title}">
+            let str = `<button class="project" type="button" id="${project.title}">
                     <span>${project.title}</span>
                             <div class="projectDelete">
                                     x
@@ -32,6 +32,9 @@ export default class PureDOM {
             el.insertAdjacentHTML("beforebegin", str);
            
         }
+    }
+    loadProjNameIntoMain(value = ''){
+      document.getElementById('projectHeader').textContent = value;
     }
     loadItemIntoMain (item = new Item()) {
         document.getElementById('newItem').insertAdjacentHTML('beforebegin',

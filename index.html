@@ -21,9 +21,9 @@
               </div>
                     <div id="projectsList">
 
-                          <button  id="newProject" >+ add project</button>
+                          <button type="button" id="newProject" >+ add project</button>
                           <!-- <form id="projectForm"> -->
-                          <input type="text" id="projectName" name="projectName">
+                          <input type="text" id="projectName" name="projectName" required>
                           <div id="projectButtonContainer">
                                 <button type="button" id="projectCancel">Cancel</button>
                                 <button type="button" id="projectEnter">Enter</button>
@@ -31,7 +31,7 @@
                                  
                           <!-- </form> -->
                     </div>
-              <button id="notesButton">Notes
+              <button type="button" id="notesButton">Notes
                       <img id="notesImg" src="note.svg">
               </button>
         </div>
@@ -40,25 +40,25 @@
                     <ul id="itemsList">
 
                         <li id="newItem">
-                            <button id="newItemButton">+ add new Item
+                            <button id="newItemButton" type="button">+ add new Item
                             </button>
                             <div id="itemPrompt"> 
                                     <form id="itemPromptForm">
                                           <label for="newItemName">Title:</label><br>
-                                          <input type="text" id="newItemName" name="newItemName"><br>
+                                          <input type="text" id="newItemName" name="newItemName" required minlength="3"/><br>
                                           <label for="newDetails">Details (optional):</label><br>
                                           <textarea type="text" id="newDetails" name="newDetails"></textarea><br>
                                           <label for="newDueDate">DueDate:</label>
-                                          <input type="date" id="newDueDate" name="newDueDate"><br>
+                                          <input type="date" id="newDueDate" name="newDueDate" required /><br>
                                           <div>
                                                 <label for="newPriority">Priority:</label><br>
-                                                <select id="newPriority" name="newPriority" >
+                                                <select id="newPriority" name="newPriority" required >
                                                       <option value="high">high</option>
                                                       <option value="medium">medium</option>
                                                       <option value="low">low</option>
                                                 </select>
                                                 <button type="button" id="itemCancel">Cancel</button>
-                                                <button type="button" id="itemEnter">Enter</button>    
+                                                <button type="submit" id="itemEnter">Enter</button>    
                                     </form>                      
                                 </div>                          
                             </div>
