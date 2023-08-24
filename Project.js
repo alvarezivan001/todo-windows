@@ -11,7 +11,8 @@ export default class Project {
     addItem(item = {}) {
       this._items.push(item);
     }
-    removeItem(index = -1) {
+    removeItem(value = '') {
+      var index = this._items.findIndex((item) => item.name == value)
       this._items.splice(index, 1);
     }
     get items() {

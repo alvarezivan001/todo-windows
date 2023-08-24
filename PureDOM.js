@@ -10,23 +10,27 @@ export default class PureDOM {
     loadProjectIntoPanel(project = new Project()) {
         
         if(project.title == 'Default')
-        {   document.getElementById('newProject').insertAdjacentHTML("beforebegin",
-
-            `<button class="project" id="${project.title}">${project.title}
-
-
-                </button>`
-            );
+        {   let el = document.getElementById('newProject');
+            console.log(el);
+            let str = `<button class="project" id="${project.title}">
+                      <span>${project.title}</span>
+                      </button>`;
+                      console.log(str);
+            el.insertAdjacentHTML("beforebegin", str);
+            console.log(el);
         }
         else{
-            document.getElementById('newProject').insertAdjacentHTML("beforebegin",
-
-            `<button class="project" id="${project.title}">${project.title}
+            let el = document.getElementById('newProject');
+            console.log(el);
+            let str = `<button class="project" id="${project.title}">
+                    <span>${project.title}</span>
                             <div class="projectDelete">
                                     x
                             </div>
-                </button>`
-            );
+                </button>`;
+                console.log(str);
+            el.insertAdjacentHTML("beforebegin", str);
+           
         }
     }
     loadItemIntoMain (item = new Item()) {

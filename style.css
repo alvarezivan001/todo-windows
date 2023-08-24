@@ -81,7 +81,7 @@ img{
   position: relative;
   top: 5px;
 }
-.project {
+.project, #newProject, #notesButton {
   font-size: 20px;
   font-weight: 900;
   text-align: start;
@@ -92,7 +92,7 @@ img{
   display: flex;
   justify-content: space-between;
 }
-.project:hover{
+.project:hover, #newProject:hover, #notesButton:hover{
   background-color: rgb(92, 132, 252);
 }
 .projectDelete {
@@ -106,16 +106,18 @@ img{
 #newProject {
   text-align: center;
   margin-top: 15px;
- 
+  
 }
 #projectName {
   width: 90%;
   line-height: 1.5em;
+  display: none;
 }
 #projectButtonContainer {
   width: 90%;
   display: flex;
   justify-content: space-between;
+  display: none;
 }
 #projectCancel, #projectEnter {
   font-size: 24px;

@@ -117,6 +117,8 @@ class Main {
     this.initialProjects();
     this.initialItems();
     this.initialNotes();
+    this.initNewProjButtons();
+    this.initNewItemButtons();
     this.loadAllProjects();
     this.loadAllItemsOfProj(this.getProject('Default'));
   }
@@ -151,13 +153,17 @@ class Main {
         this.dom.loadProjectIntoPanel(project);
     });
     this.initAllProjDelButtons();
+    
+    this.printProjects();
   }
   loadAllItemsOfProj(project = new Project()) {
     project.items.forEach(item => {
       this.dom.loadItemIntoMain(item);
     });
     this.initAllItemDelButtons();
+    
     this.initEditableItemListeners();
+    this.printItems();
   }
   loadAllNotes(){
   }
@@ -167,12 +173,13 @@ class Main {
 
 //when reloading the items or projects list
   removeAllProjects(){
-    let itemsList = document.getElementsByClassName('projectItem');
+    let itemsList = document.querySelectorAll('.project');
     
-    itemsList.forEach(node => node.remove());
+    itemsList.forEach((node) => node.remove());
+  
   }
   removeAllItemsOfProj(){
-    let projectsList = document.getElementsByClassName('project');
+    let projectsList = document.querySelectorAll('.projectItem')
     projectsList.forEach(node => node.remove());
   }
   removeAllNotes(){
@@ -183,14 +190,20 @@ class Main {
 
 //adds eventlisteners to X's  
   initAllProjDelButtons() {
-    const itemDelButtons = document.querySelectorAll('.projectDelete');
-    itemDelButtons.forEach((item) => item.addEventListener(
-      'click', this.removeProject(item.parentNode.textContent
-        )));
+    const projDelButtons = document.querySelectorAll('.projectDelete');
+    projDelButtons.forEach((proj) => proj.addEventListener(
+      'click', () => {
+        this.removeProject(proj.parentNode.getElementsByTagName('span')[0].textContent);
+      }
+        ));
   }
   initAllItemDelButtons() {
     const itemDelButtons = document.querySelectorAll('.delete');
-    itemDelButtons.forEach((item) => item.addEventListener('click', ));
+    itemDelButtons.forEach((item) => item.addEventListener(
+      'click', () => {
+        this.removeItem(item.parentNode);
+      }
+    ));
   }
 
 //adds eventlisteners to new proj and item buttons
@@ -213,7 +226,7 @@ class Main {
         this.dom.clearItemPromptFields();
     });
   }
-  initNewProjBUttons(){
+  initNewProjButtons(){
     const newProjectButton = document.getElementById('newProject');
     const cancelProjectButton = document.getElementById('projectCancel');
     const enterProjectButton = document.getElementById('projectEnter');
@@ -253,6 +266,8 @@ class Main {
     this.removeAllProjects();
     this.loadAllProjects();
   }
+
+
   //when a project or item is deleted
   removeProject(value = ''){
 
@@ -262,8 +277,18 @@ class Main {
     this.removeAllProjects();
     this.loadAllProjects();
   }
+  removeItem(liParent) {
+    var parent = document.getElementById('Code');
+    var child = parent.childNodes[1];
 
+    var proj = document.getElementById('projectHeader').textContent;
+    var currentProj = this.getProject(proj);
+    currentProj.removeItem(child.textContent);
 
+    this.removeAllItemsOfProj();
+    this.loadAllItemsOfProj(currentProj);
+    
+  }
 
 
 
@@ -276,12 +301,20 @@ class Main {
     const itemDetails = document.querySelectorAll('.details');
     const itemdueDates = document.querySelectorAll('.dueDate');
 
-    itemTitles.forEach(node => node.addEventListener('input', ]));
-    itemDetails.forEach(node => node.addEventListener('input', ]));
-    itemdueDates.forEach(node => node.addEventListener('input',]));
+    // itemTitles.forEach(node => node.addEventListener('input', ]));
+    // itemDetails.forEach(node => node.addEventListener('input', ]));
+    // itemdueDates.forEach(node => node.addEventListener('input',]));
   }
 
-  
+  printProjects(){
+    this.allProjects.forEach((proj) => console.log(proj.title));
+  }
+  printItems(){
+    var projName = document.getElementById('projectHeader');
+    var proj = this.getProject(projName.textContent);
+
+    proj.items.forEach((item) => console.log(item.name));
+  }
 }
 
 
