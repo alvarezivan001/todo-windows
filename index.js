@@ -79,6 +79,7 @@ const submitNewToDo = () => {
   loadToDoIntoBody(newToDo);
 }
 
+// git test
 // //done with currentindex
 // const removeCurrentProjectFlag = () => {}
 // const addCurrentProjectFlag = () => {}
