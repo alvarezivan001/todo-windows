@@ -166,7 +166,7 @@ class Main {
     });
     this.initAllItemDelButtons();
     this.initEditableItemListeners();
-    this.initEditableItemListeners();
+    
     this.printItems();
   }
   loadAllNotes(){
