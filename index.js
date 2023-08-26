@@ -165,7 +165,7 @@ class Main {
       this.dom.loadItemIntoMain(item);
     });
     this.initAllItemDelButtons();
-    
+    this.initEditableItemListeners();
     this.initEditableItemListeners();
     this.printItems();
   }
@@ -319,12 +319,45 @@ class Main {
   initEditableItemListeners(){
     const itemTitles = document.querySelectorAll('.itemTitle');
     const itemDetails = document.querySelectorAll('.details');
-    const itemdueDates = document.querySelectorAll('.dueDate');
 
-    // itemTitles.forEach(node => node.addEventListener('input', ]));
-    // itemDetails.forEach(node => node.addEventListener('input', ]));
+    // const itemdueDates = document.querySelectorAll('.dueDate');
+
+    itemTitles.forEach(node => node.addEventListener('input', () => {
+      this.editItem(node, "title");
+      }
+    ));
+
+    itemDetails.forEach(node => node.addEventListener('input', () => {
+      this.editItem(node, "deets");
+    }
+    ));
     // itemdueDates.forEach(node => node.addEventListener('input',]));
   }
+  editItem(childNode, itemParam){
+
+    var proj = document.getElementById('projectHeader').textContent;
+    var currentProj = this.getProject(proj);
+    var liNode = childNode.parentNode;
+
+    var parent = document.getElementById('itemsList');
+    var index = Array.from(parent.children).indexOf(liNode);
+
+    if(itemParam == "title")
+    {
+      currentProj.items[index].name = childNode.textContent;
+      console.log(currentProj.items[index].name);
+    }
+    else if(itemParam == "deets"){
+      currentProj.items[index].details = childNode.textContent;
+      console.log(currentProj.items[index].details);
+    }
+    else{
+
+    }
+
+  }
+
+
 
   printProjects(){
     this.allProjects.forEach((proj) => console.log(proj.title));
