@@ -121,6 +121,8 @@ class Main {
     this.initNewItemButtons();
     this.loadAllProjects();
     this.loadAllItemsOfProj(this.getProject('Default'));
+    this.setnewItemDate();
+
   }
   initialProjects(){
     this.allProjects.push(new Project('Default'));
@@ -172,6 +174,22 @@ class Main {
   loadAllNotes(){
   }
 
+  // auto sets the date of new item
+  setnewItemDate(){
+
+    let newDueDate = document.getElementById('newDueDate');
+
+    let dateObj = new Date();
+    let month = dateObj.getUTCMonth() + 1; //months from 1-12\
+    if(month < 10){ month = "0" + month.toString();}
+    let day = dateObj.getUTCDate();
+    let year = dateObj.getUTCFullYear();
+
+    let newDate = year + "-" + month + "-" + day;
+
+    newDueDate.value = newDate;
+
+  }
 
 
 

@@ -69,6 +69,19 @@ export default class PureDOM {
     }
     clearItemPromptFields() {
         document.getElementById('itemPromptForm').reset();
+
+        let newDueDate = document.getElementById('newDueDate');
+
+        let dateObj = new Date();
+        let month = dateObj.getUTCMonth() + 1; //months from 1-12\
+        if(month < 10){ month = "0" + month.toString();}
+        let day = dateObj.getUTCDate();
+        let year = dateObj.getUTCFullYear();
+    
+        let newDate = year + "-" + month + "-" + day;
+    
+        newDueDate.value = newDate;
+
     }
     
 
