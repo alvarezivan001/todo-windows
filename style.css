@@ -198,7 +198,7 @@ li > div {
   flex-basis: 100px;
 }
 .dueDate {
-  flex-basis: 100px;
+  flex-basis: 150px;
   border: none;
 }
 .details {

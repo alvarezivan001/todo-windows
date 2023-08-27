@@ -320,18 +320,22 @@ class Main {
     const itemTitles = document.querySelectorAll('.itemTitle');
     const itemDetails = document.querySelectorAll('.details');
 
-    // const itemdueDates = document.querySelectorAll('.dueDate');
+    const itemdueDates = document.querySelectorAll('.dueDate');
 
     itemTitles.forEach(node => node.addEventListener('input', () => {
       this.editItem(node, "title");
       }
     ));
-
     itemDetails.forEach(node => node.addEventListener('input', () => {
       this.editItem(node, "deets");
     }
     ));
-    // itemdueDates.forEach(node => node.addEventListener('input',]));
+
+
+    itemdueDates.forEach(node => node.addEventListener('input',() => {
+      this.editItem(node, "dueDate");
+    }
+    ));
   }
   editItem(childNode, itemParam){
 
@@ -352,7 +356,8 @@ class Main {
       console.log(currentProj.items[index].details);
     }
     else{
-
+      currentProj.items[index].dueDate = childNode.value;
+      console.log(currentProj.items[index].dueDate);
     }
 
   }
