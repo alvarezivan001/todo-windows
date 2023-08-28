@@ -122,6 +122,7 @@ class Main {
     this.loadAllProjects();
     this.loadAllItemsOfProj(this.getProject('Default'));
     this.setnewItemDate();
+    this.isStoragePopulated();
 
   }
   initialProjects(){
@@ -139,6 +140,25 @@ class Main {
   initialNotes(){
     this.allNotes.addNote('This is an example note!');
     this.allNotes.addNote('This content is editable');
+  }
+
+
+  //checks if local storage is populated and if not then populate, if so 
+  //populate the class array allProjects[]
+  isStoragePopulated(){
+    if(!localStorage.getItem("allProjects"))
+    {
+      this.populateStorage();
+    }
+    else{
+      this.populateAllProjects();
+    }
+  }
+  populateStorage(){
+    // localStorage.setItem("allProjects", JSON.stringify(this.allProjects));
+  }
+  populateAllProjects(){
+    // this.allProjects = JSON.parse(localStorage.getItem('allProjects'));
   }
 
 
@@ -281,12 +301,14 @@ class Main {
 
     this.removeAllItemsOfProj();
     this.loadAllItemsOfProj(this.getProject(this.dom.getProjectName()));
+    this.populateStorage();
   }
   submitNewProject(){
     this.allProjects.push(new Project(this.dom.getNewProjName()));
 
     this.removeAllProjects();
     this.loadAllProjects();
+    this.populateStorage();
   }
 
 
@@ -298,6 +320,7 @@ class Main {
 
     this.removeAllProjects();
     this.loadAllProjects();
+    this.populateStorage();
   }
   removeItem(divTitle) {
 
@@ -307,7 +330,7 @@ class Main {
 
     this.removeAllItemsOfProj();
     this.loadAllItemsOfProj(currentProj);
-    
+    this.populateStorage();
   }
 
 
@@ -342,16 +365,19 @@ class Main {
 
     itemTitles.forEach(node => node.addEventListener('input', () => {
       this.editItem(node, "title");
+      this.populateStorage();
       }
     ));
     itemDetails.forEach(node => node.addEventListener('input', () => {
       this.editItem(node, "deets");
+      this.populateStorage();
     }
     ));
 
 
     itemdueDates.forEach(node => node.addEventListener('input',() => {
       this.editItem(node, "dueDate");
+      this.populateStorage();
     }
     ));
   }
