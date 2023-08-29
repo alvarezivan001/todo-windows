@@ -119,10 +119,11 @@ class Main {
     this.initialNotes();
     this.initNewProjButtons();
     this.initNewItemButtons();
+    this.isStoragePopulated();
     this.loadAllProjects();
     this.loadAllItemsOfProj(this.getProject('Default'));
     this.setnewItemDate();
-    this.isStoragePopulated();
+
 
   }
   initialProjects(){
@@ -136,6 +137,8 @@ class Main {
 
     this.getProject('Chores').addItem(new Item('Fix PC','Order parts from Amazon', '2023-09-01', 'high'));
     this.getProject('Chores').addItem(new Item('Wash Dishes','from last nights party','2023-08-07','low'));
+  
+    console.log(this.allProjects);
   }
   initialNotes(){
     this.allNotes.addNote('This is an example note!');
@@ -151,14 +154,31 @@ class Main {
       this.populateStorage();
     }
     else{
+      // localStorage.clear();
       this.populateAllProjects();
     }
   }
   populateStorage(){
-    // localStorage.setItem("allProjects", JSON.stringify(this.allProjects));
+    localStorage.setItem("allProjects", JSON.stringify(this.allProjects));
   }
   populateAllProjects(){
-    // this.allProjects = JSON.parse(localStorage.getItem('allProjects'));
+    
+    let arr = JSON.parse(localStorage.getItem('allProjects'));
+    this.allProjects = [];
+    
+    arr.forEach(project => {
+        let newproj = new Project(project._title);
+        if(project._items.length > 0){
+          project._items.forEach(item =>
+              {
+                  let newitem = new Item(item._name, item._details, item._dueDate, item._priority);
+                  newproj.addItem(newitem);
+              });
+        }
+        this.allProjects.push(newproj);
+    });
+
+    console.log(this.allProjects);
   }
 
 

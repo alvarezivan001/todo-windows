@@ -8,6 +8,7 @@ export default class Project {
       return this._title;
   
     }
+    
     addItem(item = {}) {
       this._items.push(item);
     }
@@ -17,6 +18,9 @@ export default class Project {
     }
     get items() {
       return this._items;
+    }
+    set items(newItems) {
+      this._items = newItems;
     }
     // searchForToDo(name) {
       

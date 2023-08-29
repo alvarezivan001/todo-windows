@@ -220,7 +220,7 @@ li > div {
 
 #itemPrompt {
   width: auto;
-  display: block;
+  display: none;
   
   
 }
